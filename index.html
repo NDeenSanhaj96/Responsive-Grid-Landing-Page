@@ -10,24 +10,97 @@
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @font-face {
+      font-family: 'Inter';
+      src: url('./assets/fonts/inter/inter-variable.ttf') format('truetype');
+      font-weight: 100 900;
+      font-display: swap;
+    }
+
+    html{
+      font-size: 62.5%;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background: hsl(228, 99%, 58%);
+      color: hsl(224, 100%, 100%);
+    }
+
+    a {
+      text-decoration: none;
+    }
+    
+    .navbar_container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3.4rem;
+      padding: 3.4rem 2rem;
+    }
+
+    .navbar_container a {
+      font-size: 1.8rem;
+      font-weight: 500;
+      padding-left: 2rem;
+      color: hsl(224, 100%, 95%);
+      position: relative;
+    }
+
+    .navbar_container a::before {
+      content: "";
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 50%;
+      background: hsl(224, 100%, 95%);
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+    }
+
+    .navbar_container button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 
   <!-- Nav -->
-  Bridge Collective
+   <header>
+    <nav class="navbar_container">
+      <a href="#">Bridge Collective</a>
+      <button><img src="assets/images/icon-menu.svg" alt="navbar menu icon" /></button>
+    </nav>
+   </header>
 
-  <!-- Hero -->
-  A classroom for every child.
+   <main>
 
-  We fund the schools, train the teachers, and measure what works — so every child we reach today becomes a graduate tomorrow.
+    <!-- Hero -->
+    <section class="hero_section">
+      <div class="hero_description-box">
+        <h1>A classroom for every child.</h1>
+        <p>We fund the schools, train the teachers, and measure what works — so every child we reach today becomes a graduate tomorrow.</p>
+      </div>
 
-  <!-- Stats -->
-  2.4M
-  Students reached
-  Across 31 countries since 2011.
+      
+      <!-- Stats -->
+      <div class="hero_stats-box">
+        <div class="student_stats-box">
+          <img src="assets/images/icon-sparkle.svg" />
+          <h2>2.4M</h2>
+          <h3>Students reached</h3>
+          <p>Across 31 countries since 2011.</p>
+        </div>
+      </div>
+    </section>
+   </main>
 
   1,284
   Schools partnered
