@@ -78,14 +78,14 @@
         cursor: pointer;
       }
 
-      /* Mobile Navbar */
+      /* Side Navbar */
 
-      .mobile_navbar-container {
+      .side_navbar-container {
         display: none;
         position: relative;
       }
 
-      .mobile_navbar-container.active {
+      .side_navbar-container.active {
         width: 25%;
         height: 100%;
         background: hsl(220, 100%, 64%);
@@ -94,11 +94,17 @@
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        justify-content: space-between;
+        /* justify-content: space-between; */
+        gap: 2.4rem;
         position: absolute;
         top: 14%;
         right: 0;
       }
+
+      .navbar_container a {
+        font-size: 2.4rem;
+      }
+
 
       /* Hero Section */
 
@@ -221,7 +227,7 @@
 
       <!-- Menu panel — hidden until the hamburger is activated -->
 
-    <nav class="mobile_navbar-container">
+    <nav class="side_navbar-container">
       <a href="#about">About</a>
       <a href="#our_work">Our Work</a>
       <a href="#partners">Partners</a>
@@ -304,11 +310,11 @@
     <script>
       const navbarBtn = document.getElementById('navbarBtn');
       const header = document.querySelector('header');
-      const mobileNavbarMenu = document.querySelector('.mobile_navbar-container');
+      const sideNavbarMenu = document.querySelector('.side_navbar-container');
 
       navbarBtn.addEventListener('click', () => {
         header.style.background = "hsl(220, 100%, 64%)";
-        mobileNavbarMenu.classList.toggle('active');
+        sideNavbarMenu.classList.toggle('active');
       })
     </script>
   </body>
