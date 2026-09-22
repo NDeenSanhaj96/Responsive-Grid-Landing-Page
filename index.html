@@ -101,10 +101,10 @@
         right: 0;
       }
 
-      .navbar_container a {
+      .side_navbar-container a {
         font-size: 2.4rem;
+        font-weight: 500;
       }
-
 
       /* Hero Section */
 
@@ -212,7 +212,6 @@
         font-weight: 400;
         padding: 3.4rem;
       }
-
     </style>
   </head>
   <body>
@@ -221,19 +220,19 @@
       <div class="navbar_container">
         <a href="#">Bridge Collective</a>
         <button id="navbarBtn">
-          <img src="assets/images/icon-menu.svg" alt="navbar menu icon" />
+          <img id="navbarMenuIcon" src="assets/images/icon-menu.svg" alt="navbar menu icon" />
         </button>
       </div>
 
       <!-- Menu panel — hidden until the hamburger is activated -->
 
-    <nav class="side_navbar-container">
-      <a href="#about">About</a>
-      <a href="#our_work">Our Work</a>
-      <a href="#partners">Partners</a>
-      <a href="#annual_report">Annual Report</a>
-      <a href="#donate">Donate</a>
-    </nav>
+      <nav class="side_navbar-container">
+        <a href="#about">About</a>
+        <a href="#our_work">Our Work</a>
+        <a href="#partners">Partners</a>
+        <a href="#annual_report">Annual Report</a>
+        <a href="#donate">Donate</a>
+      </nav>
     </header>
 
     <main class="hero">
@@ -308,14 +307,27 @@
     </div>
 
     <script>
-      const navbarBtn = document.getElementById('navbarBtn');
-      const header = document.querySelector('header');
-      const sideNavbarMenu = document.querySelector('.side_navbar-container');
+      const navbarBtn = document.getElementById("navbarBtn");
+      const header = document.querySelector("header");
+      const sideNavbarMenu = document.querySelector(".side_navbar-container");
+      const navbarMenuIcon = document.querySelector('#navbarMenuIcon');
+      const closeMenuIcon = document.createElement("img");
 
-      navbarBtn.addEventListener('click', () => {
+      closeMenuIcon.src = "assets/images/icon-close.svg";
+      closeMenuIcon.alt = "close navbar menu icon";
+
+      navbarBtn.addEventListener("click", () => {
         header.style.background = "hsl(220, 100%, 64%)";
-        sideNavbarMenu.classList.toggle('active');
-      })
+        sideNavbarMenu.classList.toggle("active");
+
+        if (sideNavbarMenu.classList.contains("active")) {
+          navbarMenuIcon.style.display = "none";
+          navbarBtn.appendChild(closeMenuIcon);
+        } else {
+          navbarMenuIcon.style.display = "block";
+          closeMenuIcon.remove();
+        }
+      });
     </script>
   </body>
 </html>
