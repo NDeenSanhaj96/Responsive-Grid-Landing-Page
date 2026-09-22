@@ -40,6 +40,7 @@
 
       a {
         text-decoration: none;
+        color: hsl(224, 100%, 95%);
       }
 
       /* Navigation */
@@ -75,6 +76,28 @@
         background: transparent;
         border: none;
         cursor: pointer;
+      }
+
+      /* Mobile Navbar */
+
+      .mobile_navbar-container {
+        display: none;
+        position: relative;
+      }
+
+      .mobile_navbar-container.active {
+        width: 25%;
+        height: 100%;
+        background: hsl(220, 100%, 64%);
+        border-top: 1px solid hsl(228, 99%, 58%);
+        padding: 3.4rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-between;
+        position: absolute;
+        top: 14%;
+        right: 0;
       }
 
       /* Hero Section */
@@ -173,17 +196,38 @@
         padding: 3.4rem;
       }
 
+      .attribution {
+        display: flex;
+        /* flex-direction: column; */
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        font-size: 1rem;
+        font-weight: 400;
+        padding: 3.4rem;
+      }
+
     </style>
   </head>
   <body>
     <!-- Nav -->
     <header>
-      <nav class="navbar_container">
+      <div class="navbar_container">
         <a href="#">Bridge Collective</a>
-        <button>
+        <button id="navbarBtn">
           <img src="assets/images/icon-menu.svg" alt="navbar menu icon" />
         </button>
-      </nav>
+      </div>
+
+      <!-- Menu panel — hidden until the hamburger is activated -->
+
+    <nav class="mobile_navbar-container">
+      <a href="#about">About</a>
+      <a href="#our_work">Our Work</a>
+      <a href="#partners">Partners</a>
+      <a href="#annual_report">Annual Report</a>
+      <a href="#donate">Donate</a>
+    </nav>
     </header>
 
     <main class="hero">
@@ -198,7 +242,6 @@
 
       <!-- Stats -->
       <section class="stats_section">
-
         <article class="students stats-box">
           <div class="stats_heading">
             <img src="assets/images/icon-sparkle.svg" alt="spakle icon" />
@@ -242,9 +285,9 @@
             <p>Partner schools outperform national averages 3x.</p>
           </div>
         </article>
-      </section> 
+      </section>
     </main>
-    
+
     <!-- Footer -->
 
     <footer>
@@ -252,21 +295,21 @@
       <span>Registered charity 12345678</span>
     </footer>
 
-    <!-- Menu panel — hidden until the hamburger is activated -->
-     
-    <div class="mobile_navbar-container">
-      <a href="#about">About</a>
-      <a href="#our_work">Our Work</a>
-      <a href="#partners">Partners</a>
-      <a href="#annual_report">Annual Report</a>
-      <a href="#donate">Donate</a>
-    </div>
-        
-
     <div class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
-      Coded by <a href="#">Your Name Here</a>.
+      Coded by <a href="https://github.com/NDeenSanhaj96">Nasir The Analyst</a>.
     </div>
+
+    <script>
+      const navbarBtn = document.getElementById('navbarBtn');
+      const header = document.querySelector('header');
+      const mobileNavbarMenu = document.querySelector('.mobile_navbar-container');
+
+      navbarBtn.addEventListener('click', () => {
+        header.style.background = "hsl(220, 100%, 64%)";
+        mobileNavbarMenu.classList.toggle('active');
+      })
+    </script>
   </body>
 </html>
