@@ -44,13 +44,15 @@
       }
 
       /* Navigation */
-
+      
       .navbar_container {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 3.4rem;
         padding: 3.4rem 2rem;
+        position: sticky;
+        z-index: 20;
       }
 
       .navbar_container a {
@@ -82,19 +84,19 @@
 
       .side_navbar-container {
         display: none;
-        position: relative;
+        z-index: 30;
       }
 
       .side_navbar-container.active {
         width: 25%;
-        height: 100%;
+        height: 100vh;
+        min-height: 900px;
         background: hsl(220, 100%, 64%);
         border-top: 1px solid hsl(228, 99%, 58%);
         padding: 3.4rem;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        /* justify-content: space-between; */
         gap: 2.4rem;
         position: absolute;
         top: 14%;
@@ -106,6 +108,24 @@
         font-weight: 500;
       }
 
+      /* Overlay */
+
+      .overlay {
+        visibility: hidden;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 10;
+      }
+      
+      .overlay.active {
+        visibility: visible;
+        opacity: 1;
+        cursor: pointer;
+      }
+
       /* Hero Section */
 
       .hero {
@@ -114,6 +134,7 @@
         border-top: 1px solid hsl(220, 100%, 64%);
         border-bottom: 1px solid hsl(220, 100%, 64%);
         min-height: 70rem;
+        z-index: 1;
       }
 
       .hero_section {
@@ -200,6 +221,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 3.4rem;
+        z-index: 1;
       }
 
       .attribution {
@@ -211,16 +233,21 @@
         font-size: 1rem;
         font-weight: 400;
         padding: 3.4rem;
+        z-index: 1;
       }
     </style>
   </head>
   <body>
     <!-- Nav -->
-    <header>
+    <navbar_container>
       <div class="navbar_container">
         <a href="#">Bridge Collective</a>
         <button id="navbarBtn">
-          <img id="navbarMenuIcon" src="assets/images/icon-menu.svg" alt="navbar menu icon" />
+          <img
+            id="navbarMenuIcon"
+            src="assets/images/icon-menu.svg"
+            alt="navbar menu icon"
+          />
         </button>
       </div>
 
@@ -233,7 +260,8 @@
         <a href="#annual_report">Annual Report</a>
         <a href="#donate">Donate</a>
       </nav>
-    </header>
+      <div class="overlay"></div>
+    </navbar_container>
 
     <main class="hero">
       <!-- Hero -->
@@ -305,27 +333,30 @@
       <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
       Coded by <a href="https://github.com/NDeenSanhaj96">Nasir The Analyst</a>.
     </div>
-
     <script>
       const navbarBtn = document.getElementById("navbarBtn");
-      const header = document.querySelector("header");
+      const navbar_container = document.querySelector(".navbar_container");
       const sideNavbarMenu = document.querySelector(".side_navbar-container");
-      const navbarMenuIcon = document.querySelector('#navbarMenuIcon');
+      const navbarMenuIcon = document.querySelector("#navbarMenuIcon");
       const closeMenuIcon = document.createElement("img");
+      const overlay = document.querySelector(".overlay");
 
       closeMenuIcon.src = "assets/images/icon-close.svg";
       closeMenuIcon.alt = "close navbar menu icon";
 
       navbarBtn.addEventListener("click", () => {
-        header.style.background = "hsl(220, 100%, 64%)";
         sideNavbarMenu.classList.toggle("active");
 
         if (sideNavbarMenu.classList.contains("active")) {
           navbarMenuIcon.style.display = "none";
           navbarBtn.appendChild(closeMenuIcon);
+          overlay.classList.add("active");
+          navbar_container.style.background = "hsl(220, 100%, 64%)";
         } else {
+          navbar_container.style.background = "hsl(228, 99%, 58%)";
           navbarMenuIcon.style.display = "block";
           closeMenuIcon.remove();
+          overlay.classList.remove("active");
         }
       });
     </script>
