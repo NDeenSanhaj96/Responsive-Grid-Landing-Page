@@ -44,7 +44,7 @@
       }
 
       /* Navigation */
-      
+
       .navbar_container {
         display: flex;
         align-items: center;
@@ -119,7 +119,7 @@
         transition: opacity 0.3s ease;
         z-index: 10;
       }
-      
+
       .overlay.active {
         visibility: visible;
         opacity: 1;
@@ -335,7 +335,7 @@
     </div>
     <script>
       const navbarBtn = document.getElementById("navbarBtn");
-      const navbar_container = document.querySelector(".navbar_container");
+      const navbarContainer = document.querySelector(".navbar_container");
       const sideNavbarMenu = document.querySelector(".side_navbar-container");
       const navbarMenuIcon = document.querySelector("#navbarMenuIcon");
       const closeMenuIcon = document.createElement("img");
@@ -344,6 +344,11 @@
       closeMenuIcon.src = "assets/images/icon-close.svg";
       closeMenuIcon.alt = "close navbar menu icon";
 
+      function closeNavbarMenu() {
+        sideNavbarMenu.classList.remove('active');
+        navbarContainer.classList.remove('active');
+      }
+
       navbarBtn.addEventListener("click", () => {
         sideNavbarMenu.classList.toggle("active");
 
@@ -351,14 +356,21 @@
           navbarMenuIcon.style.display = "none";
           navbarBtn.appendChild(closeMenuIcon);
           overlay.classList.add("active");
-          navbar_container.style.background = "hsl(220, 100%, 64%)";
+          navbarContainer.style.background = "hsl(220, 100%, 64%)";
         } else {
-          navbar_container.style.background = "hsl(228, 99%, 58%)";
+          navbarContainer.style.background = "hsl(228, 99%, 58%)";
           navbarMenuIcon.style.display = "block";
           closeMenuIcon.remove();
           overlay.classList.remove("active");
         }
       });
+      overlay.addEventListener("click", () => {
+          sideNavbarMenu.classList.remove("active");
+          overlay.classList.remove("active");
+          navbarContainer.style.background = "hsl(228, 99%, 58%)";
+          navbarMenuIcon.style.display = "block";
+          closeMenuIcon.remove();
+        });
     </script>
   </body>
 </html>
