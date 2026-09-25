@@ -78,6 +78,11 @@
         background: transparent;
         border: none;
         cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .navbar_container button:hover {
+        transform: translateY(-2px);
       }
 
       /* Side Navbar */
@@ -96,7 +101,7 @@
         padding: 3.4rem;
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
+        align-items: flex-start;
         gap: 2.4rem;
         position: absolute;
         top: 14%;
@@ -106,6 +111,11 @@
       .side_navbar-container a {
         font-size: 2.4rem;
         font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .side_navbar-container a:hover {
+        color: hsl(220, 84%, 80%);
       }
 
       /* Overlay */
@@ -310,6 +320,17 @@
         .graduation {
           border-right: 1px solid hsl(220, 100%, 64%);
         }
+
+        /* Side Navbar */
+
+        .side_navbar-container {
+          min-width: 300px;
+          width: 100%;
+        }
+
+        .annual_report {
+          text-wrap: nowrap;
+        }
       }
     </style>
   </head>
@@ -333,7 +354,7 @@
         <a href="#about">About</a>
         <a href="#our_work">Our Work</a>
         <a href="#partners">Partners</a>
-        <a href="#annual_report">Annual Report</a>
+        <a href="#annual_report" class="annual_report">Annual Report</a>
         <a href="#donate">Donate</a>
       </nav>
       <div class="overlay"></div>
