@@ -104,9 +104,9 @@
         align-items: flex-start;
         gap: 2.4rem;
         position: absolute;
-        top: 5px;
+        top: 100%;
         right: 0;
-        transform: translate(20px, 10%);
+        transform: none;
       }
 
       .side_navbar-container a {
@@ -262,13 +262,28 @@
         z-index: 1;
       }
 
+      /* Tablet Design */
+
+      @media (max-width: 1024px) {
+        .hero {
+          width: 100%;
+        }
+
+        .navbar_container {
+          width: 100%;
+          height: 100%;
+          position: relative;
+        }
+
+      }
+
       /* Mobile Design */
 
-      @media (max-width: 768px) {
+      @media (max-width: 850px) {
         .hero {
           display: grid;
           grid-template-columns: 1fr;
-          grid-template-rows: 1fr;
+          grid-template-rows: auto auto;
         }
 
         .hero_section h1 {
@@ -289,12 +304,11 @@
           border-top: 1px solid hsl(220, 100%, 64%);
         }
 
-        .stats_box {
+        .stats-box {
           width: 100%;
           display: flex;
           flex-direction: column;
           justify-content: center;
-          /* border: 1px solid hsl(220, 100%, 64%); */
         }
 
         .stats_heading {
@@ -305,7 +319,7 @@
           width: 2rem;
         }
 
-        .stats_heading > strong{
+        .stats_heading > strong {
           font-size: 1.6rem;
           font-weight: bold;
         }
@@ -340,12 +354,16 @@
 
         /* Side Navbar */
 
+        .navbar_container {
+          position: relative;
+        }
+
         .side_navbar-container {
-          min-width: 200px;
+          min-width: 300px;
           width: 50%;
           height: 100vh;
           position: absolute;
-          top: 0;
+          top: 14%;
           right: 0;
         }
 
@@ -353,33 +371,11 @@
           text-wrap: nowrap;
         }
       }
-
-      @media (max-width: 1024px) {
-        .hero {
-          width: 100%;
-          height: 100vh;
-        }
-
-        .navbar_container {
-          width: 100%;
-          height: 100%;
-          position: relative;
-        }
-
-        .side_navbar-container.active {
-          width: 50%;
-          height: 100%;
-          position: absolute;
-          top: 20px;
-          right: 0;
-          transform: translateY(8.5%);
-        }
-      }
     </style>
   </head>
   <body>
     <!-- Nav -->
-    <navbar_container>
+    <header>
       <div class="navbar_container">
         <a href="#">Bridge Collective</a>
         <button id="navbarBtn">
@@ -389,19 +385,17 @@
             alt="navbar menu icon"
           />
         </button>
+        <!-- Menu panel — hidden until the hamburger is activated -->
+        <nav class="side_navbar-container">
+          <a href="#about">About</a>
+          <a href="#our_work">Our Work</a>
+          <a href="#partners">Partners</a>
+          <a href="#annual_report" class="annual_report">Annual Report</a>
+          <a href="#donate">Donate</a>
+        </nav>
       </div>
-
-      <!-- Menu panel — hidden until the hamburger is activated -->
-
-      <nav class="side_navbar-container">
-        <a href="#about">About</a>
-        <a href="#our_work">Our Work</a>
-        <a href="#partners">Partners</a>
-        <a href="#annual_report" class="annual_report">Annual Report</a>
-        <a href="#donate">Donate</a>
-      </nav>
       <div class="overlay"></div>
-    </navbar_container>
+    </header>
 
     <main class="hero">
       <!-- Hero -->
@@ -485,8 +479,8 @@
       closeMenuIcon.alt = "close navbar menu icon";
 
       function closeNavbarMenu() {
-        sideNavbarMenu.classList.remove('active');
-        navbarContainer.classList.remove('active');
+        sideNavbarMenu.classList.remove("active");
+        navbarContainer.classList.remove("active");
       }
 
       navbarBtn.addEventListener("click", () => {
@@ -505,12 +499,12 @@
         }
       });
       overlay.addEventListener("click", () => {
-          sideNavbarMenu.classList.remove("active");
-          overlay.classList.remove("active");
-          navbarContainer.style.background = "hsl(228, 99%, 58%)";
-          navbarMenuIcon.style.display = "block";
-          closeMenuIcon.remove();
-        });
+        sideNavbarMenu.classList.remove("active");
+        overlay.classList.remove("active");
+        navbarContainer.style.background = "hsl(228, 99%, 58%)";
+        navbarMenuIcon.style.display = "block";
+        closeMenuIcon.remove();
+      });
     </script>
   </body>
 </html>
