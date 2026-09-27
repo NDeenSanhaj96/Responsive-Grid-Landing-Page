@@ -51,7 +51,7 @@
         justify-content: space-between;
         gap: 3.4rem;
         padding: 3.4rem 2rem;
-        position: sticky;
+        position: relative;
         z-index: 20;
       }
 
@@ -93,7 +93,7 @@
       }
 
       .side_navbar-container.active {
-        width: 25%;
+        width: 50%;
         height: 100vh;
         min-height: 900px;
         background: hsl(220, 100%, 64%);
@@ -104,18 +104,34 @@
         align-items: flex-start;
         gap: 2.4rem;
         position: absolute;
-        top: 14%;
+        top: 5px;
         right: 0;
+        transform: translate(20px, 10%);
       }
 
       .side_navbar-container a {
         font-size: 2.4rem;
         font-weight: 500;
         transition: all 0.3s ease;
+        position: relative;
       }
 
-      .side_navbar-container a:hover {
+      .side_navbar-container a::after {
+        content: "";
+        width: 100%;
+        height: 2px;
+        background: hsl(224, 100%, 95%);
+        position: absolute;
+        bottom: -6px;
+        right: 0;
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.3s ease;
+      }
+
+      .side_navbar-container a:hover::after {
         color: hsl(220, 84%, 80%);
+        transform: scaleX(1);
       }
 
       /* Overlay */
@@ -248,7 +264,7 @@
 
       /* Mobile Design */
 
-      @media (max-width: 760px) {
+      @media (max-width: 768px) {
         .hero {
           display: grid;
           grid-template-columns: 1fr;
@@ -258,6 +274,7 @@
         .hero_section h1 {
           font-size: 4rem;
           font-weight: 700;
+          margin-bottom: 4rem;
         }
 
         .hero_section p {
@@ -324,12 +341,38 @@
         /* Side Navbar */
 
         .side_navbar-container {
-          min-width: 300px;
-          width: 100%;
+          min-width: 200px;
+          width: 50%;
+          height: 100vh;
+          position: absolute;
+          top: 0;
+          right: 0;
         }
 
         .annual_report {
           text-wrap: nowrap;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .hero {
+          width: 100%;
+          height: 100vh;
+        }
+
+        .navbar_container {
+          width: 100%;
+          height: 100%;
+          position: relative;
+        }
+
+        .side_navbar-container.active {
+          width: 50%;
+          height: 100%;
+          position: absolute;
+          top: 20px;
+          right: 0;
+          transform: translateY(8.5%);
         }
       }
     </style>
