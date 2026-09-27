@@ -18,8 +18,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [GitHub Repository](Your_GitHub_Repository_URL)
-- Live Site URL: [Live Site](Your_Live_Site_URL)
+- Solution URL: [GitHub Repository](https://github.com/NDeenSanhaj96/Responsive-Grid-Landing-Page/)
+- Live Site URL: [Live Site](https://ndeensanhaj96.github.io/Responsive-Grid-Landing-Page/)
 
 ## My Process
 
