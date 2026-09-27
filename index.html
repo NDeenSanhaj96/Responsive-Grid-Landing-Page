@@ -274,7 +274,6 @@
           height: 100%;
           position: relative;
         }
-
       }
 
       /* Mobile Design */
@@ -370,6 +369,13 @@
         .annual_report {
           text-wrap: nowrap;
         }
+
+        footer {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+        }
       }
     </style>
   </head>
@@ -460,13 +466,14 @@
     <footer>
       <span>© 2026 Bridge Collective</span>
       <span>Registered charity 12345678</span>
-    </footer>
 
-    <div class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
-      Coded by <a href="https://github.com/NDeenSanhaj96">Nasir The Analyst</a>.
-    </div>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a
+        >. Coded by
+        <a href="https://github.com/NDeenSanhaj96">Nasir The Analyst</a>.
+      </div>
+    </footer>
     <script>
       const navbarBtn = document.getElementById("navbarBtn");
       const navbarContainer = document.querySelector(".navbar_container");
